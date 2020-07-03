@@ -13,12 +13,15 @@ class CreateJawabanTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('jawaban', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
-            $table->integer('id_pertanyaan');
+            $table->unsignedBigInteger('pertanyaan_id')->unsigned();
             $table->string('isi');
+            $table->timestamps();
+            $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan')->onDelete('cascade');
         });
+     
     }
 
     /**

@@ -4,8 +4,8 @@ namespace App\Models;
 use Illuminate\Support\Facades\DB;
 
 class JawabanModel{
-    public static function get_all($id_pertanyaan){
-        $jawaban = DB::table('jawaban')->where('id_pertanyaan',$id_pertanyaan)->get();
+    public static function get_all($pertanyaan_id){
+        $jawaban = DB::table('jawaban')->where('pertanyaan_id',$pertanyaan_id)->get();
     return $jawaban;
     }
 
